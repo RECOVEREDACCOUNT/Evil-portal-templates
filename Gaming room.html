@@ -1,0 +1,293 @@
+<!-- AP="GamingRoom-WiFi" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Network Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: pulse 4s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .login-container {
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 1px rgba(102, 126, 234, 0.3);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .orb-container {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .orb {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #667eea, #764ba2, #1a1a2e);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.6), inset 0 -20px 30px rgba(0, 0, 0, 0.5);
+            animation: rotate 8s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .ring {
+            position: absolute;
+            border: 2px solid rgba(102, 126, 234, 0.4);
+            border-radius: 50%;
+            animation: ringRotate 4s linear infinite;
+        }
+
+        .ring:nth-child(1) {
+            width: 120%;
+            height: 40%;
+            top: 30%;
+            left: -10%;
+            transform: rotateX(70deg);
+        }
+
+        .ring:nth-child(2) {
+            width: 130%;
+            height: 50%;
+            top: 25%;
+            left: -15%;
+            transform: rotateX(70deg);
+            animation-delay: -2s;
+            border-color: rgba(118, 75, 162, 0.3);
+        }
+
+        @keyframes ringRotate {
+            0%, 100% { transform: rotateX(70deg) rotateZ(0deg); }
+            50% { transform: rotateX(70deg) rotateZ(180deg); }
+        }
+
+        .wifi-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+        }
+
+        .wifi-icon svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+        }
+
+        .header {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #f1f5f9;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .subheader {
+            font-size: 14px;
+            color: #94a3b8;
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+            background: rgba(15, 23, 42, 0.6);
+            color: #f1f5f9;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #667eea;
+            background: rgba(15, 23, 42, 0.9);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        button {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 13px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #93c5fd;
+            border-left: 3px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-section">
+            <div class="orb-container">
+                <div class="orb">
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                </div>
+                <div class="wifi-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                        <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                        <circle cx="12" cy="20" r="1"></circle>
+                    </svg>
+                </div>
+            </div>
+            <div class="header">Gaming Room WiFi</div>
+            <div class="subheader">Unblocked Student WiFi</div>
+        </div>
+
+        <div class="alert">
+            All content filters disabled for unrestricted access
+        </div>
+
+        <form method="POST" action="/post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="button-container">
+                <button type="submit">Connect</button>
+            </div>
+        </form>
+
+        <div class="footer-text">
+            Student Network Access<br>
+            For help contact IT Services
+        </div>
+    </div>
+</body>
+</html>
